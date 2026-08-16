@@ -149,14 +149,6 @@ h1, h2, h3, h4,
 @media (max-width: 639px) {
   .hero-btn-row {
     flex-wrap: nowrap !important;
-    gap: 0.5rem !important;
-  }
-  .hero-btn-row .btn {
-    padding: 0.45rem 1.05rem !important;
-    font-size: 0.39rem !important;
-    letter-spacing: 0.09em !important;
-    flex: 1 1 0 !important;
-    white-space: nowrap !important;
   }
 }
 

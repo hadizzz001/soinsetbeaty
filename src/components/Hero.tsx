@@ -32,10 +32,12 @@ export default function Hero() {
             rel="noopener noreferrer"
             className="btn btn-primary"
           >
-            Book an appointment
+            <span className="hidden sm:inline">Book an appointment</span>
+            <span className="sm:hidden">Book</span>
           </a>
           <a href="#treatments" className="btn btn-ghost">
-            Discover our treatments
+            <span className="hidden sm:inline">Discover our treatments</span>
+            <span className="sm:hidden">Treatments</span>
           </a>
         </div>
       </div>
