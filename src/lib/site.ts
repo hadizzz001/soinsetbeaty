@@ -136,16 +136,30 @@ export const services = [
     ],
   },
   {
+    key: "makeup",
+    title: "Camera Ready: Professional Makeup",
+    name: "Makeup Services",
+    image:
+      "https://res.cloudinary.com/seukwo8g/image/upload/v1787036230/6e8ea8a9ea1fb93bb107c77a33b103ef_grle0w.jpg",
+    description:
+      "Bridal, evening and everyday makeup crafted by our artists — flawless, long-wearing looks designed around your features and your occasion.",
+    points: [
+      "Bridal, event & everyday looks",
+      "Long-wearing, photo-ready finish",
+      "Premium products for every skin tone",
+    ],
+  },
+  {
     key: "nails",
-    title: "Polished Perfection: Nails & Makeup Studio",
-    name: "Nails & Makeup",
+    title: "Polished Perfection: Nail Studio",
+    name: "Nails",
     image:
       "https://res.cloudinary.com/seukwo8g/image/upload/v1786908970/d13528e04a7ca4a4c6d22c16b4308d2b_hbafie.jpg",
     description:
-      "From flawless manicures to full glam makeup looks, our studio brings out your best for every occasion — big or small.",
+      "From flawless manicures to lasting pedicures and custom nail art, our studio finishes your look down to the very last detail.",
     points: [
       "Manicure, pedicure & nail art",
-      "Everyday to special-occasion makeup",
+      "Gel and long-lasting finishes",
       "Premium products, expert hands",
     ],
   },
