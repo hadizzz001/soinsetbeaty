@@ -35,14 +35,14 @@ export default function FeatureSection({
           }`}
         >
           {video ? (
-            <div className="shape-media relative mx-auto aspect-[3/4] w-full max-w-sm">
+            <div className="shape-media relative mx-auto w-full max-w-sm">
               <video
                 src={video}
                 autoPlay
                 loop
                 muted
                 playsInline
-                className="h-full w-full object-cover"
+                className="block h-auto w-full"
               />
             </div>
           ) : (

@@ -146,12 +146,6 @@ h1, h2, h3, h4,
   border-color: #4d4d4d;
 }
 
-@media (max-width: 639px) {
-  .hero-btn-row {
-    flex-wrap: nowrap !important;
-  }
-}
-
 .section-y {
   padding-top: clamp(3.5rem, 7vw, 6.5rem);
   padding-bottom: clamp(3.5rem, 7vw, 6.5rem);

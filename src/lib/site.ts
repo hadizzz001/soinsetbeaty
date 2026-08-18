@@ -84,7 +84,7 @@ export const services = [
     title: "Lift Without Surgery: HIFU Therapy",
     name: "HIFU Treatment",
     image:
-      "https://res.cloudinary.com/seukwo8g/image/upload/v1786907527/HIFU_Treatment_deoufx.jpg",
+      "https://res.cloudinary.com/seukwo8g/image/upload/v1787015579/72c9512bc415f561671fac33964f91d7_vsyxft.jpg",
     description:
       "High-Intensity Focused Ultrasound works deep beneath the skin to lift, tighten and stimulate new collagen — the non-surgical alternative to a facelift.",
     points: [
@@ -98,7 +98,7 @@ export const services = [
     title: "Smooth For Good: Diode Laser Hair Removal",
     name: "Diode Laser Technology",
     image:
-      "https://res.cloudinary.com/seukwo8g/image/upload/v1786907337/Diode_Laser_Technology_fxbltt.jpg",
+      "https://res.cloudinary.com/seukwo8g/image/upload/v1787015656/27b2325d54927a851450cab70efd5fc3_sc21da.jpg",
     description:
       "Say goodbye to unwanted hair with our latest-generation diode laser — fast, precise and comfortable, suited to every skin tone and hair type.",
     points: [
@@ -168,7 +168,7 @@ export const services = [
     title: "A Fresh Canvas: Tattoo Removal",
     name: "Tattoo Removal",
     image:
-      "https://res.cloudinary.com/seukwo8g/image/upload/v1786907527/Tattoo_Removal_kgq84c.jpg",
+      "https://res.cloudinary.com/seukwo8g/image/upload/v1787015580/b4487754592a4b2cb14a78a2b084193b_yx0gze.jpg",
     description:
       "Advanced laser technology that gradually fades unwanted tattoos, safely and effectively — reclaim your skin, one session at a time.",
     points: [
