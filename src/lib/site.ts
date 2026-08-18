@@ -108,6 +108,48 @@ export const services = [
     ],
   },
   {
+    key: "pressotherapy",
+    title: "Lighter Legs, Detoxed Body: Pressotherapy",
+    name: "Pressotherapy",
+    image:
+      "https://res.cloudinary.com/seukwo8g/image/upload/v1787089608/579ed8c54de9dbbfd0a11e03862b7cd6_cixilu.jpg",
+    description:
+      "A gentle compression therapy that massages the body wave by wave, flushing out retained fluid and toxins — you leave feeling lighter, slimmer and deeply relaxed.",
+    points: [
+      "Reduces water retention and heavy legs",
+      "Boosts lymphatic drainage and detox",
+      "Pure relaxation from start to finish",
+    ],
+  },
+  {
+    key: "maderotherapy",
+    title: "Sculpted By Hand: Maderotherapy Massage",
+    name: "Maderotherapy",
+    image:
+      "https://res.cloudinary.com/seukwo8g/image/upload/v1787089608/1be3ef4defd4ed4a7d4f68ce18b15d9d_c8ruxy.jpg",
+    description:
+      "A deep, rhythmic massage performed with sculpted wooden tools that breaks down cellulite, drains toxins and remodels your curves — completely natural, completely non-invasive.",
+    points: [
+      "Visibly smooths cellulite and orange-peel skin",
+      "Stimulates lymphatic drainage and circulation",
+      "100% natural, no needles or downtime",
+    ],
+  },
+  {
+    key: "oxygen",
+    title: "Breathe Life Into Your Skin: Oxygen Therapy",
+    name: "Oxygen Machine",
+    image:
+      "https://res.cloudinary.com/seukwo8g/image/upload/v1787089608/517c15fd825c8771202df2394199c495_ezozpj.jpg",
+    description:
+      "Pure oxygen infused under pressure with a serum tailored to your skin — an instant surge of hydration, radiance and freshness with zero irritation.",
+    points: [
+      "Instant hydration and luminous glow",
+      "Soothing and safe for sensitive skin",
+      "Zero downtime — perfect before an event",
+    ],
+  },
+  {
     key: "microblading",
     title: "Wake Up Flawless: Microblading Artistry",
     name: "Microblading",
@@ -261,12 +303,11 @@ export const footerNav = {
     "Enlarged pores",
     "Wrinkles",
     "Stretch marks",
+    "Skin Laxity",
+    "Stubborn Fat",
+    "Cellulite",
+    "Unwanted Hair",
   ],
-  traitements: [
-    "Signature Medispa",
-    "Dermapen",
-    "Plasmapen",
-    "Mesotherapy",
-  ],
+  traitements: services.map((s) => s.name),
   navigation: ["Pricing", "About", "Careers", "Gift cards"],
 };

@@ -103,7 +103,11 @@ function FooterCol({
       <p className="text-xs font-semibold uppercase tracking-[0.2em] opacity-70">
         {title}
       </p>
-      <ul className="mt-5 flex flex-col gap-3">
+      <ul
+        className={`mt-5 gap-x-6 gap-y-3 ${
+          links.length > 8 ? "grid grid-cols-2" : "flex flex-col"
+        }`}
+      >
         {links.map((label) => (
           <li key={label} className="text-sm opacity-80">
             {label}
