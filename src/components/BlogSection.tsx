@@ -6,6 +6,8 @@ export default async function BlogSection() {
   // Posts come from the dashboard.
   const posts = await getBlogPosts();
 
+  if (!posts.length) return null;
+
   return (
     <section
       className="section-y overflow-hidden"

@@ -1,0 +1,22 @@
+[build]
+  command = "next build"
+  publish = ".next"
+
+# Required so Netlify runs the Next.js server (SSR) instead of publishing a
+# static snapshot of the pages. Without it every page would be frozen at
+# build time and dashboard updates would never appear.
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+# Belt and braces: the HTML is database-driven, never cache it on the edge.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Cache-Control = "no-store, must-revalidate"
+    Netlify-CDN-Cache-Control = "no-store"
+
+# ...but hashed build assets stay immutable.
+[[headers]]
+  for = "/_next/static/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

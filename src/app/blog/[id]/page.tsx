@@ -5,10 +5,11 @@ import PageHero from "@/components/PageHero";
 import { site } from "@/lib/site";
 import { getBlogPost, getBlogPosts } from "@/lib/cms";
 
-export async function generateStaticParams() {
-  const posts = await getBlogPosts();
-  return posts.map((post) => ({ id: post.id }));
-}
+// Articles are created/deleted from the dashboard: always render on request
+// instead of pre-building the list of slugs.
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+export const dynamicParams = true;
 
 export async function generateMetadata(
   props: PageProps<"/blog/[id]">

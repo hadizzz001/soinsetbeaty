@@ -8,6 +8,9 @@ import { getBlogPosts } from "@/lib/cms";
 const intro =
   "Tips, advice and honest information on skin and body care, written by the team that performs the treatments.";
 
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 export async function generateMetadata(): Promise<Metadata> {
   const posts = await getBlogPosts();
 
@@ -31,7 +34,29 @@ export default async function BlogPage() {
   const posts = await getBlogPosts();
   const [featured, ...rest] = posts;
 
-  if (!featured) return null;
+  if (!featured) {
+    return (
+      <>
+        <PageHero
+          eyebrow="Our blog"
+          title="Skin, body and everything in between."
+          description={intro}
+          image="https://res.cloudinary.com/seukwo8g/image/upload/v1787016004/6271dff7-86e4-44b0-b7ab-771c271e32b0_bpg7tz.jpg"
+        />
+        <section
+          className="section-y"
+          style={{ backgroundColor: "var(--color-body)" }}
+        >
+          <div className="container-site text-center">
+            <p className="body-text">
+              No articles published yet. Come back soon.
+            </p>
+          </div>
+        </section>
+        <ConsultationCta />
+      </>
+    );
+  }
 
   return (
     <>

@@ -73,6 +73,10 @@ export const viewport: Viewport = {
   userScalable: false,
 };
 
+// AnnouncementBar / Footer read live MongoDB content.
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html

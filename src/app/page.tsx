@@ -4,6 +4,11 @@ import FeatureSection from "@/components/FeatureSection";
 import ServicesShowcase from "@/components/ServicesShowcase";
 import BlogSection from "@/components/BlogSection";
 
+// Content comes from MongoDB and can change at any time from the dashboard,
+// so this page must never be captured as a build-time snapshot.
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 export default function Home() {
   return (
     <>

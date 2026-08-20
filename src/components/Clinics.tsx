@@ -6,6 +6,8 @@ export default async function Clinics() {
   // Cards come from the dashboard.
   const clinics = await getClinics();
 
+  if (!clinics.length) return null;
+
   return (
     <section
       id="clinics"

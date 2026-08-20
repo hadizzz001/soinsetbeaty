@@ -41,8 +41,9 @@ async function getJson<T>(path: string): Promise<T | null> {
     const collection = API_COLLECTIONS[path];
     if (!collection) return null;
     return (await findAll(collection)) as T;
-  } catch {
+  } catch (error) {
     // Database down / not configured — callers fall back to static content.
+    console.error(`[cms] ${path} failed:`, error);
     return null;
   }
 }
@@ -69,6 +70,7 @@ type ApiOfferText = {
 export async function getOfferTexts(): Promise<OfferText[] | null> {
   const rows = await getJson<ApiOfferText[]>("/api/offer-text");
   if (!Array.isArray(rows)) return null;
+  if (rows.length === 0) return [];
 
   const offers = rows
     .filter(isActive)
@@ -76,7 +78,7 @@ export async function getOfferTexts(): Promise<OfferText[] | null> {
     .map((row) => ({ text: row.text, icon: row.icon || "" }))
     .filter((offer) => offer.text);
 
-  return offers.length ? offers : null;
+  return offers;
 }
 
 /* ------------------------------------------------------------------ */
@@ -177,6 +179,9 @@ export async function getClinics(): Promise<Clinic[]> {
   const rows = await getJson<ApiClinic[]>("/api/clinic");
   if (!Array.isArray(rows)) return fallbackClinics;
 
+  // An empty collection is a deliberate editorial choice: show nothing.
+  if (rows.length === 0) return [];
+
   const clinics = rows
     .filter(isActive)
     .sort(byOrder)
@@ -190,7 +195,7 @@ export async function getClinics(): Promise<Clinic[]> {
     }))
     .filter((clinic) => clinic.title && clinic.image);
 
-  return clinics.length ? clinics : fallbackClinics;
+  return clinics;
 }
 
 /* ------------------------------------------------------------------ */
@@ -228,6 +233,9 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
   const rows = await getJson<ApiBlogPost[]>("/api/blog");
   if (!Array.isArray(rows)) return staticBlogPosts;
 
+  // Editor deleted every post → the site must show none, not the seed data.
+  if (rows.length === 0) return [];
+
   const posts = rows
     .filter((row) => row.published !== false)
     .sort(byOrder)
@@ -251,7 +259,7 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
     }))
     .filter((post) => post.id && post.title);
 
-  return posts.length ? posts : staticBlogPosts;
+  return posts;
 }
 
 export async function getBlogPost(id: string): Promise<BlogPost | undefined> {
@@ -323,6 +331,7 @@ type ApiConcern = {
 export async function getConcerns(): Promise<string[]> {
   const rows = await getJson<ApiConcern[]>("/api/concern");
   if (!Array.isArray(rows)) return footerNav.domaines;
+  if (rows.length === 0) return [];
 
   const concerns = rows
     .filter(isActive)
@@ -330,7 +339,7 @@ export async function getConcerns(): Promise<string[]> {
     .map((row) => row.name)
     .filter(Boolean);
 
-  return concerns.length ? concerns : footerNav.domaines;
+  return concerns;
 }
 
 /* ------------------------------------------------------------------ */
@@ -347,6 +356,7 @@ type ApiTreatment = {
 export async function getTreatments(): Promise<string[]> {
   const rows = await getJson<ApiTreatment[]>("/api/treatment");
   if (!Array.isArray(rows)) return staticTreatments;
+  if (rows.length === 0) return [];
 
   const names = rows
     .filter(isActive)
@@ -354,7 +364,7 @@ export async function getTreatments(): Promise<string[]> {
     .map((row) => row.name)
     .filter(Boolean);
 
-  return names.length ? names : staticTreatments;
+  return names;
 }
 
 /* ------------------------------------------------------------------ */
@@ -374,6 +384,7 @@ type ApiReview = {
 export async function getTestimonials(): Promise<Testimonial[]> {
   const rows = await getJson<ApiReview[]>("/api/review");
   if (!Array.isArray(rows)) return staticTestimonials;
+  if (rows.length === 0) return [];
 
   const reviews = rows
     .sort(byOrder)
@@ -384,5 +395,5 @@ export async function getTestimonials(): Promise<Testimonial[]> {
     }))
     .filter((review) => review.name && review.text);
 
-  return reviews.length ? reviews : staticTestimonials;
+  return reviews;
 }
