@@ -54,6 +54,14 @@
 
 html {
   scroll-behavior: smooth;
+  /* Offsets hash navigation so targets clear the sticky header. */
+  scroll-padding-top: 88px;
+}
+
+@media (min-width: 768px) {
+  html {
+    scroll-padding-top: 104px;
+  }
 }
 
 body {
@@ -77,6 +85,62 @@ h1, h2, h3, h4,
   margin-right: auto;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
+}
+
+/* Primary body copy: section descriptions, intros, article text. */
+.body-text {
+  font-size: 1rem;
+  line-height: 1.75;
+  font-weight: 500;
+  color: var(--color-text);
+  opacity: 0.88;
+}
+
+/* Secondary body copy: bullet points, captions, list items. */
+.body-text-sm {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  font-weight: 500;
+  color: var(--color-text);
+  opacity: 0.85;
+}
+
+@media (min-width: 768px) {
+  .body-text {
+    font-size: 1.0625rem;
+  }
+
+  .body-text-sm {
+    font-size: 1rem;
+  }
+}
+
+/* On photographic backgrounds the copy carries its own color. */
+.body-text-hero {
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  font-weight: 600;
+  opacity: 1;
+}
+
+@media (min-width: 768px) {
+  .body-text-hero {
+    font-size: 1.1875rem;
+  }
+}
+
+.nav-link {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-text);
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+}
+
+.nav-link:hover {
+  opacity: 1;
 }
 
 .eyebrow {

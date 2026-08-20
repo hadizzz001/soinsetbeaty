@@ -1,6 +1,11 @@
-import { footerNav, site } from "@/lib/site";
+import Link from "next/link";
+import { footerNav, navLinks, site } from "@/lib/site";
+import { getConcerns } from "@/lib/cms";
 
-export default function Footer() {
+export default async function Footer() {
+  // "Concerns" is managed from the dashboard.
+  const concerns = await getConcerns();
+
   return (
     <footer
       className="border-t border-[var(--color-line)] text-[var(--color-text)]"
@@ -13,7 +18,7 @@ export default function Footer() {
             <h3 className="font-serif mt-3 text-3xl md:text-4xl">
               Stay in the loop!
             </h3>
-            <p className="mt-3 max-w-md text-sm leading-relaxed opacity-75">
+            <p className="body-text mt-3 max-w-md">
               Sign up for our newsletter and receive our latest articles on
               skin health along with exclusive offers. You&apos;re going to
               love it.
@@ -40,13 +45,13 @@ export default function Footer() {
               alt={site.name}
               className="h-11 w-auto object-contain"
             />
-            <p className="mt-5 max-w-xs text-sm leading-relaxed opacity-75">
+            <p className="body-text-sm mt-5 max-w-xs">
               {site.description}
             </p>
-            <p className="mt-4 text-sm opacity-75">{site.address}</p>
+            <p className="body-text-sm mt-4">{site.address}</p>
             <a
               href={`mailto:${site.email}`}
-              className="mt-1 block text-sm opacity-75 hover:opacity-100"
+              className="body-text-sm mt-1 block hover:opacity-100"
             >
               {site.email}
             </a>
@@ -77,9 +82,9 @@ export default function Footer() {
             </div>
           </div>
 
-          <FooterCol title="Concerns" links={footerNav.domaines} />
+          <FooterCol title="Concerns" links={concerns} />
           <FooterCol title="Treatments" links={footerNav.traitements} />
-          <FooterCol title="Navigation" links={footerNav.navigation} />
+          <FooterNavCol title="Navigation" links={navLinks} />
         </div>
 
         <div className="flex flex-col items-center justify-between gap-3 border-t border-[var(--color-line)] pt-8 text-xs uppercase tracking-[0.15em] opacity-60 sm:flex-row">
@@ -109,8 +114,36 @@ function FooterCol({
         }`}
       >
         {links.map((label) => (
-          <li key={label} className="text-sm opacity-80">
+          <li key={label} className="body-text-sm">
             {label}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+function FooterNavCol({
+  title,
+  links,
+}: {
+  title: string;
+  links: { label: string; href: string }[];
+}) {
+  return (
+    <div>
+      <p className="text-xs font-semibold uppercase tracking-[0.2em] opacity-70">
+        {title}
+      </p>
+      <ul className="mt-5 flex flex-col gap-x-6 gap-y-3">
+        {links.map((link) => (
+          <li key={link.label}>
+            <Link
+              href={link.href}
+              className="body-text-sm transition-opacity hover:opacity-100"
+            >
+              {link.label}
+            </Link>
           </li>
         ))}
       </ul>

@@ -1,14 +1,19 @@
-import { services, site } from "@/lib/site";
+import { getClinics } from "@/lib/cms";
+import { site } from "@/lib/site";
 
-export default function ServicesShowcase() {
+export default async function ServicesShowcase() {
+  // Same records as the "Our clinics" carousel, managed from the dashboard.
+  const clinics = await getClinics();
+
   return (
     <>
-      {services.map((s, i) => {
+      {clinics.map((s, i) => {
         const reverse = i % 2 === 1;
         const tint = i % 2 === 1;
         return (
           <section
             key={s.key}
+            id={i === 0 ? "treatments" : undefined}
             className="section-y"
             style={{
               backgroundColor: tint ? "var(--color-section)" : "var(--color-body)",
@@ -32,14 +37,14 @@ export default function ServicesShowcase() {
                   <h2 className="font-serif mt-4 text-3xl leading-tight md:text-4xl">
                     {s.title}
                   </h2>
-                  <p className="mt-5 max-w-md text-sm leading-relaxed opacity-75">
+                  <p className="body-text mt-5 max-w-md">
                     {s.description}
                   </p>
                   <ul className="mt-7 flex flex-col gap-3">
                     {s.points.map((p) => (
                       <li
                         key={p}
-                        className="flex items-start gap-3 text-sm opacity-80"
+                        className="body-text-sm flex items-start gap-3"
                       >
                         <span className="mt-1">✦</span>
                         <span>{p}</span>

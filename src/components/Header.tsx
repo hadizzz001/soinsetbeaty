@@ -22,13 +22,10 @@ export default function Header() {
         </Link>
 
         <nav className="hidden items-center gap-9 lg:flex">
-          {navLinks.map((label) => (
-            <span
-              key={label}
-              className="text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-[var(--color-text)] opacity-80"
-            >
-              {label}
-            </span>
+          {navLinks.map((link) => (
+            <Link key={link.label} href={link.href} className="nav-link">
+              {link.label}
+            </Link>
           ))}
         </nav>
 
@@ -72,13 +69,15 @@ export default function Header() {
           style={{ backgroundColor: "var(--color-body)" }}
         >
           <nav className="container-site flex flex-col gap-1 py-4">
-            {navLinks.map((label) => (
-              <span
-                key={label}
+            {navLinks.map((link) => (
+              <Link
+                key={link.label}
+                href={link.href}
+                onClick={() => setOpen(false)}
                 className="border-b border-[var(--color-line)] py-3 text-sm font-semibold uppercase tracking-[0.14em] text-[var(--color-text)]"
               >
-                {label}
-              </span>
+                {link.label}
+              </Link>
             ))}
             <div className="mt-4 flex flex-col gap-3">
               <a

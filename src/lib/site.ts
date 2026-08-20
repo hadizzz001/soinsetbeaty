@@ -17,7 +17,11 @@ export const site = {
   facebook: "https://www.facebook.com/soinsbeauteinstitut/",
 };
 
-export const navLinks = ["Treatments", "Concerns", "Clinics", "Blog", "About"];
+export const navLinks = [
+  { label: "Clinics", href: "/#clinics" },
+  { label: "Blog", href: "/blog" },
+  { label: "About", href: "/about" },
+];
 
 export const clinics = [
   {
@@ -273,28 +277,262 @@ export const testimonials = [
   },
 ];
 
-export const blogPosts = [
+export type BlogBlock = { heading?: string; text: string };
+
+export type BlogPost = {
+  id: string;
+  title: string;
+  excerpt: string;
+  date: string;
+  readTime: string;
+  category: string;
+  image: string;
+  content: BlogBlock[];
+};
+
+export const blogPosts: BlogPost[] = [
   {
+    id: "open-consultation",
     title: "Struggling to choose your treatment? Discover the Open Consultation",
+    excerpt:
+      "Not sure which treatment is right for you? The Open Consultation gives you a full session with an expert who maps out exactly what your skin and body need.",
+    date: "August 12, 2026",
+    readTime: "4 min read",
+    category: "Consultation",
     image:
-      "https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?q=80&w=1000&auto=format&fit=crop",
+      "https://res.cloudinary.com/seukwo8g/image/upload/v1787233085/seed-bWF0JmZpdD1jcm9w_mizvs0.jpg",
+    content: [
+      {
+        text: "Walking into an aesthetic clinic for the first time can feel overwhelming. There are dozens of treatments, each promising a different result, and very little to tell you which one actually belongs in your plan. That is exactly the problem the Open Consultation was built to solve.",
+      },
+      {
+        heading: "What happens during the session",
+        text: "You sit down with an expert nurse or aesthetician who examines your skin and body, listens to what bothers you, and explains in plain language what is realistically achievable. No sales script, no pressure — just a professional assessment of where you are and where you want to go.",
+      },
+      {
+        heading: "You leave with a plan, not a brochure",
+        text: "By the end of the session you have a written treatment plan: which treatments, in what order, how many sessions, and what results to expect at each stage. If a treatment is not right for you, we will tell you that too — it is the most useful thing we can do.",
+      },
+      {
+        heading: "The fee comes back to you",
+        text: "The consultation fee is always refunded when you go ahead and book a treatment. It exists to protect the time of our specialists, not to add a cost to your journey.",
+      },
+      {
+        text: "If you have been putting off a decision because you are not sure what you need, this is the place to start. Message us on WhatsApp and we will find a slot that works for you.",
+      },
+    ],
   },
   {
+    id: "pressotherapy-or-maderotherapy",
+    title: "Pressotherapy or Maderotherapy? Choosing your body treatment",
+    excerpt:
+      "Both smooth, drain and reshape — but they work in completely different ways. Here is how to tell which one your body is asking for.",
+    date: "August 5, 2026",
+    readTime: "5 min read",
+    category: "Body",
+    image:
+      "https://res.cloudinary.com/seukwo8g/image/upload/v1787089608/1be3ef4defd4ed4a7d4f68ce18b15d9d_c8ruxy.jpg",
+    content: [
+      {
+        text: "They often appear side by side on a treatment menu, and clients regularly ask us which of the two they should book. The honest answer is that they solve different problems — and used together, they solve them faster.",
+      },
+      {
+        heading: "Maderotherapy works the tissue",
+        text: "Maderotherapy is a deep, manual massage performed with sculpted wooden tools. The pressure breaks down fibrous cellulite, mobilises stubborn areas and physically remodels the contour of the thighs, hips and abdomen. It is intensive, hands-on work — you feel it, and you see the shape change over a course of sessions.",
+      },
+      {
+        heading: "Pressotherapy moves the fluid",
+        text: "Pressotherapy is the opposite experience. You lie in a compression suit while waves of controlled pressure travel up the body, pushing retained fluid and toxins toward the lymphatic system. There is no discomfort at all. It targets heaviness, swelling and water retention rather than fibrous tissue.",
+      },
+      {
+        heading: "How to choose",
+        text: "If your concern is orange-peel skin, dimpling and a silhouette you want visibly reshaped, start with maderotherapy. If your legs feel heavy, you swell by the end of the day, or you are recovering from a long flight or a sedentary stretch, pressotherapy is what your body needs.",
+      },
+      {
+        heading: "Why we often pair them",
+        text: "Maderotherapy releases everything the massage breaks down; pressotherapy then flushes it out. Booking pressotherapy directly after a maderotherapy session is the combination we recommend most often, and the one that produces the fastest visible change.",
+      },
+    ],
+  },
+  {
+    id: "hifu-explained",
+    title: "HIFU explained: a lift without the surgery",
+    excerpt:
+      "High-Intensity Focused Ultrasound reaches the same layer a surgeon lifts — without a single incision. Here is what it can and cannot do.",
+    date: "July 28, 2026",
+    readTime: "5 min read",
+    category: "Face",
+    image:
+      "https://res.cloudinary.com/seukwo8g/image/upload/v1787015579/72c9512bc415f561671fac33964f91d7_vsyxft.jpg",
+    content: [
+      {
+        text: "HIFU has become one of the most requested treatments in the clinic, and also one of the most misunderstood. It is not a facelift, and it is not a facial. It sits somewhere in between, and knowing which of the two it is closer to will tell you whether it is right for you.",
+      },
+      {
+        heading: "How it actually works",
+        text: "Focused ultrasound energy is delivered to a precise depth beneath the skin — the same fibromuscular layer a surgeon tightens during a lift. The energy creates tiny points of controlled thermal coagulation, and your body responds by producing new collagen over the following weeks. Nothing on the surface is broken, which is why there is no downtime.",
+      },
+      {
+        heading: "What results look like",
+        text: "Some tightening is visible immediately, but the real change arrives gradually. Collagen remodelling peaks around two to three months after the session, so the face you see in the mirror in October is the result of a session booked in August. Results typically hold for twelve to eighteen months.",
+      },
+      {
+        heading: "Who it suits",
+        text: "HIFU is at its best on mild to moderate laxity — a jawline starting to soften, brows sitting slightly lower than they used to, gentle sagging along the cheeks. If skin laxity is advanced, we will tell you honestly that a surgical option will serve you better rather than sell you a course that cannot deliver.",
+      },
+      {
+        heading: "Before your session",
+        text: "There is no special preparation and no recovery. You may feel mild tenderness for a day or two. Most clients come in on a lunch break and go straight back to work.",
+      },
+    ],
+  },
+  {
+    id: "skincare-for-men",
     title: "Skincare for men — everything you need to know",
+    excerpt:
+      "Male skin is thicker, oilier and shaves every day. It needs a routine built for it, not a scaled-down version of someone else's.",
+    date: "July 19, 2026",
+    readTime: "4 min read",
+    category: "Skincare",
     image:
-      "https://images.unsplash.com/photo-1621607512214-68297480165e?q=80&w=1000&auto=format&fit=crop",
+      "https://res.cloudinary.com/seukwo8g/image/upload/v1787233086/seed-bWF0JmZpdD1jcm9w_l1v3zz.jpg",
+    content: [
+      {
+        text: "Men's skin is not simply men's skin by branding — it is structurally different. It is roughly twenty percent thicker, produces significantly more sebum, and in most cases is dragged across a blade several times a week. Those three facts should shape everything about the routine.",
+      },
+      {
+        heading: "Thicker skin, denser collagen",
+        text: "Higher collagen density means men tend to show fine lines later. When they do appear, they arrive deeper and more suddenly. Prevention matters more than correction, and it matters earlier than most men assume.",
+      },
+      {
+        heading: "More oil, more congestion",
+        text: "Larger, more active sebaceous glands mean enlarged pores and congestion are the most common complaints we see. The instinct is to strip the skin with harsh products, which only pushes oil production higher. Balanced cleansing beats aggressive cleansing every time.",
+      },
+      {
+        heading: "Shaving is a daily exfoliation",
+        text: "A razor removes a layer of skin cells along with the hair. That is exfoliation whether you intended it or not, which is why additional scrubbing so often leads to irritation, redness and ingrown hairs.",
+      },
+      {
+        heading: "Where treatments fit",
+        text: "A professional facial clears what home care cannot reach, and laser hair removal ends the shaving irritation cycle at its source. Both are among the most requested treatments by our male clients.",
+      },
+    ],
   },
   {
+    id: "skin-issues-in-men",
     title: "Skin issues in men — causes and treatments",
+    excerpt:
+      "Ingrown hairs, congestion, razor burn and stubborn pigmentation. The four complaints we hear most, and what actually resolves them.",
+    date: "July 8, 2026",
+    readTime: "5 min read",
+    category: "Skincare",
     image:
-      "https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?q=80&w=1000&auto=format&fit=crop",
+      "https://res.cloudinary.com/seukwo8g/image/upload/v1787233087/seed-bWF0JmZpdD1jcm9w_du1y2t.jpg",
+    content: [
+      {
+        text: "Most men arrive at the clinic having lived with the same skin complaint for years, assuming it is simply how their skin is. In almost every case it is treatable, and often faster than expected.",
+      },
+      {
+        heading: "Ingrown hairs and razor bumps",
+        text: "Coarse hair growing back into the follicle causes inflammation, dark spots and sometimes scarring along the neck and jaw. Changing your shaving technique helps at the margins. Removing the hair entirely with diode laser resolves it, because the follicle stops producing the hair that keeps growing inward.",
+      },
+      {
+        heading: "Congestion and enlarged pores",
+        text: "Higher sebum production fills pores faster than they clear. A deep-cleansing facial removes the buildup properly, and a maintained routine keeps pores from stretching further. Results are visible from the first session.",
+      },
+      {
+        heading: "Persistent redness",
+        text: "Chronic irritation from daily shaving and harsh products leaves skin reactive and flushed. Calming, hydration-focused treatments such as oxygen therapy settle the skin without stripping it further.",
+      },
+      {
+        heading: "Pigmentation and old marks",
+        text: "Dark marks left behind by old breakouts or ingrown hairs fade slowly on their own — often not at all. Targeted laser treatment breaks up the pigment and clears what time has not.",
+      },
+      {
+        text: "If any of this sounds like your skin, a consultation will tell you in one session what years of guesswork has not.",
+      },
+    ],
   },
   {
+    id: "mens-skincare-routine",
     title: "Men's skincare routine: what you really need",
+    excerpt:
+      "Four products, five minutes a day. Everything beyond that is optional — here is the routine we actually recommend.",
+    date: "June 30, 2026",
+    readTime: "3 min read",
+    category: "Skincare",
     image:
-      "https://images.unsplash.com/photo-1600180758890-6b94519a8ba6?q=80&w=1000&auto=format&fit=crop",
+      "https://res.cloudinary.com/seukwo8g/image/upload/v1787233088/seed-bWF0JmZpdD1jcm9w_gxjpuo.jpg",
+    content: [
+      {
+        text: "The most common reason a skincare routine fails is that it was too complicated to keep. A routine you follow every day beats an ideal routine you abandon in a fortnight. This is the short version we give our clients.",
+      },
+      {
+        heading: "1. A cleanser that does not strip",
+        text: "Morning and evening. If your face feels tight and squeaky afterwards, the cleanser is too harsh and your skin will answer by producing more oil, not less.",
+      },
+      {
+        heading: "2. A moisturiser, even for oily skin",
+        text: "Skipping moisturiser because your skin is oily is the most common mistake we see. Dehydrated skin compensates by producing more sebum. A light, non-comedogenic formula breaks that cycle.",
+      },
+      {
+        heading: "3. Sunscreen, every single morning",
+        text: "This is the one product that does more than the rest combined. Daily SPF prevents the pigmentation and loss of firmness that are far harder and more expensive to correct later.",
+      },
+      {
+        heading: "4. One active, chosen for your concern",
+        text: "A retinoid for lines and texture, or a vitamin C for dullness and marks. One active is plenty. Adding a fifth and sixth product is how routines start causing the irritation they were meant to fix.",
+      },
+      {
+        heading: "And professionally, twice a year",
+        text: "A facial every few months clears what home care cannot reach and keeps the routine working. Twice a year is enough for most men.",
+      },
+    ],
   },
 ];
+
+export const about = {
+  hero: {
+    eyebrow: "About us",
+    title: "Expertise you can feel, results you can see.",
+    description:
+      "Soins et Beaute is more than a clinic. It is a place people choose when they want the best, the safest and the most professional care for their skin and their body.",
+    image:
+      "https://res.cloudinary.com/seukwo8g/image/upload/v1787016050/056a0e05-72ed-4292-9c40-d15d0d1a1ca9_wk6fdy.jpg",
+  },
+  story: {
+    eyebrow: "Our story",
+    title: "Built on trust, one treatment at a time",
+    description:
+      "We opened our doors in Mar Takla with a simple conviction: aesthetic care should never be a gamble. Every treatment we offer is performed by trained professionals on certified, medical-grade technology, and every plan starts with an honest conversation about what is right for you.",
+    image:
+      "https://res.cloudinary.com/seukwo8g/image/upload/v1786907527/Facials_ss9nb6.jpg",
+  },
+  values: [
+    {
+      title: "Honest advice first",
+      text: "We tell you what you need, not what fills a schedule. If a treatment is not right for you, you will hear it from us before you book it.",
+    },
+    {
+      title: "Certified technology",
+      text: "Every device in our clinic is medical-grade and maintained to standard, from our diode laser to our HIFU and body contouring systems.",
+    },
+    {
+      title: "Trained specialists",
+      text: "Your treatment is performed by an experienced nurse or aesthetician who has trained specifically on the technology being used.",
+    },
+    {
+      title: "Care that continues",
+      text: "Aftercare, follow-up and adjustments are part of the plan. We stay with you until the result is the one we promised.",
+    },
+  ],
+  stats: [
+    { value: "10,000+", label: "Treatments performed every year" },
+    { value: "5.0", label: "Average rating on Google Reviews" },
+    { value: "13", label: "Signature treatments under one roof" },
+    { value: "100%", label: "Certified, medical-grade technology" },
+  ],
+};
 
 export const footerNav = {
   domaines: [
@@ -309,5 +547,4 @@ export const footerNav = {
     "Unwanted Hair",
   ],
   traitements: services.map((s) => s.name),
-  navigation: ["Pricing", "About", "Careers", "Gift cards"],
 };

@@ -59,7 +59,7 @@ export default function FeatureSection({
             <h2 className="font-serif mt-4 text-3xl leading-tight md:text-4xl">
               {title}
             </h2>
-            <p className="mt-5 max-w-md text-sm leading-relaxed opacity-75">
+            <p className="body-text mt-5 max-w-md">
               {description}
             </p>
             <a

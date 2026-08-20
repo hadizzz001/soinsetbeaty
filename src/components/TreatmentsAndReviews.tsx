@@ -1,6 +1,13 @@
-import { treatments, testimonials, site } from "@/lib/site";
+import { site } from "@/lib/site";
+import { getTestimonials, getTreatments } from "@/lib/cms";
 
-export default function TreatmentsAndReviews() {
+export default async function TreatmentsAndReviews() {
+  // Both lists are managed from the dashboard.
+  const [treatments, testimonials] = await Promise.all([
+    getTreatments(),
+    getTestimonials(),
+  ]);
+
   return (
     <section
       id="treatments"
@@ -14,7 +21,7 @@ export default function TreatmentsAndReviews() {
             <h2 className="font-serif mt-3 text-3xl leading-tight md:text-[2.4rem]">
               Skincare &amp; aesthetic treatments
             </h2>
-            <p className="mt-5 max-w-md text-sm leading-relaxed opacity-75">
+            <p className="body-text mt-5 max-w-md">
               Our team has broad expertise across many fields to ensure you
               receive the treatment that actually works and helps you achieve
               your goals.
@@ -24,7 +31,7 @@ export default function TreatmentsAndReviews() {
               {treatments.map((t) => (
                 <li
                   key={t}
-                  className="border-b border-[var(--color-line)] pb-3 text-sm font-medium tracking-wide opacity-80"
+                  className="body-text-sm border-b border-[var(--color-line)] pb-3 tracking-wide"
                 >
                   {t}
                 </li>
@@ -50,7 +57,7 @@ export default function TreatmentsAndReviews() {
               {testimonials.map((t) => (
                 <div key={t.name} className="py-6 first:pt-0">
                   <div className="star-row mb-3 text-xs">★★★★★</div>
-                  <p className="text-sm leading-relaxed opacity-75">
+                  <p className="body-text-sm">
                     &ldquo;{t.text}&rdquo;
                   </p>
                   <p className="mt-3 text-xs font-semibold uppercase tracking-[0.14em]">

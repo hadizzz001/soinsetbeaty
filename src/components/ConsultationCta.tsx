@@ -16,14 +16,14 @@ export default function ConsultationCta() {
             <h2 className="font-serif mt-4 text-3xl leading-tight md:text-4xl">
               Book a no-obligation consultation today
             </h2>
-            <p className="mt-5 max-w-md text-sm leading-relaxed opacity-75">
+            <p className="body-text mt-5 max-w-md">
               A consultation is essential to make sure you get the treatment
               that best matches your needs, your skin, your body and your
               overall situation. We take your health seriously.
             </p>
             <ul className="mt-7 flex flex-col gap-3">
               {points.map((p) => (
-                <li key={p} className="flex items-start gap-3 text-sm opacity-80">
+                <li key={p} className="body-text-sm flex items-start gap-3">
                   <span className="mt-1">✦</span>
                   <span>{p}</span>
                 </li>
@@ -40,7 +40,7 @@ export default function ConsultationCta() {
           </div>
           <div className="shape-media relative mx-auto aspect-[3/4] w-full max-w-sm">
             <img
-              src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?q=80&w=1200&auto=format&fit=crop"
+              src="https://res.cloudinary.com/seukwo8g/image/upload/v1787233368/consultation-cta_byib8c.jpg"
               alt="Soins et Beauté consultation"
               className="absolute inset-0 h-full w-full object-cover"
             />
