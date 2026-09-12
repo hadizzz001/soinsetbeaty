@@ -15,6 +15,7 @@ export const site = {
   address: "Mar Takla, Hazmieh, Lebanon",
   instagram: "https://www.instagram.com/soins_et_beaute",
   facebook: "https://www.facebook.com/soinsbeauteinstitut/",
+  gaId: "G-0HQ9PGJTDS",
 };
 
 export const navLinks = [
