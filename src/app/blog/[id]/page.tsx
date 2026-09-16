@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import PageHero from "@/components/PageHero";
+import PixelEvent from "@/components/PixelEvent";
+import WhatsAppLink from "@/components/WhatsAppLink";
 import { site } from "@/lib/site";
 import { getBlogPost, getBlogPosts } from "@/lib/cms";
 
@@ -44,6 +46,14 @@ export default async function BlogPostPage(props: PageProps<"/blog/[id]">) {
 
   return (
     <>
+      <PixelEvent
+        event="ViewContent"
+        params={{
+          content_ids: [post.id],
+          content_name: post.title,
+          content_category: post.category,
+        }}
+      />
       <PageHero
         eyebrow={post.category}
         title={post.title}
@@ -67,14 +77,13 @@ export default async function BlogPostPage(props: PageProps<"/blog/[id]">) {
             ))}
 
             <div className="mt-14 flex flex-wrap items-center gap-4 border-t border-[var(--color-line)] pt-10">
-              <a
-                href={site.waLink}
-                target="_blank"
-                rel="noopener noreferrer"
+              <WhatsAppLink
+                event="Lead"
+                content={`Blog — ${post.title}`}
                 className="btn btn-primary"
               >
                 Book on WhatsApp
-              </a>
+              </WhatsAppLink>
               <Link href="/blog" className="btn btn-outline">
                 All articles
               </Link>

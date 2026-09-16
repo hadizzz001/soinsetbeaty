@@ -16,6 +16,7 @@ export const site = {
   instagram: "https://www.instagram.com/soins_et_beaute",
   facebook: "https://www.facebook.com/soinsbeauteinstitut/",
   gaId: "G-0HQ9PGJTDS",
+  metaPixelId: "1830311378330425",
 };
 
 export const navLinks = [

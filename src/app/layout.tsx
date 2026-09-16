@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import AnnouncementBar from "@/components/AnnouncementBar";
+import MetaPixel from "@/components/MetaPixel";
 import { site } from "@/lib/site";
 import { GoogleAnalytics } from "@next/third-parties/google";
 
@@ -93,6 +94,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <main className="flex-1">{children}</main>
         <Footer />
         <WhatsAppButton />
+        <MetaPixel />
       </body>
       <GoogleAnalytics gaId={site.gaId} />
     </html>

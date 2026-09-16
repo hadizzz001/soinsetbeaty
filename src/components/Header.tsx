@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { navLinks, site } from "@/lib/site";
+import WhatsAppLink from "@/components/WhatsAppLink";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -30,14 +31,13 @@ export default function Header() {
         </nav>
 
         <div className="hidden items-center gap-5 lg:flex">
-          <a
-            href={site.waLink}
-            target="_blank"
-            rel="noopener noreferrer"
+          <WhatsAppLink
+            event="Lead"
+            content="Header — Book now"
             className="btn btn-primary"
           >
             Book now
-          </a>
+          </WhatsAppLink>
         </div>
 
         <button
@@ -80,15 +80,14 @@ export default function Header() {
               </Link>
             ))}
             <div className="mt-4 flex flex-col gap-3">
-              <a
-                href={site.waLink}
-                target="_blank"
-                rel="noopener noreferrer"
+              <WhatsAppLink
+                event="Lead"
+                content="Header — Book now"
                 onClick={() => setOpen(false)}
                 className="btn btn-primary w-full"
               >
                 Book now
-              </a>
+              </WhatsAppLink>
             </div>
           </nav>
         </div>

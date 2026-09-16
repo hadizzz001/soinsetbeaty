@@ -1,4 +1,4 @@
-import { site } from "@/lib/site";
+import WhatsAppLink from "@/components/WhatsAppLink";
 import { getTestimonials, getTreatments } from "@/lib/cms";
 
 export default async function TreatmentsAndReviews() {
@@ -39,14 +39,13 @@ export default async function TreatmentsAndReviews() {
             </ul>
 
             <div className="mt-8 flex flex-wrap gap-4">
-              <a
-                href={site.waLink}
-                target="_blank"
-                rel="noopener noreferrer"
+              <WhatsAppLink
+                event="Lead"
+                content="Treatments overview"
                 className="btn btn-primary"
               >
                 Book on WhatsApp
-              </a>
+              </WhatsAppLink>
             </div>
           </div>
 

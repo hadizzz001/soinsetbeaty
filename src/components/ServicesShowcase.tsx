@@ -1,5 +1,5 @@
 import { getClinics } from "@/lib/cms";
-import { site } from "@/lib/site";
+import WhatsAppLink from "@/components/WhatsAppLink";
 
 export default async function ServicesShowcase() {
   // Same records as the "Our clinics" carousel, managed from the dashboard.
@@ -51,14 +51,13 @@ export default async function ServicesShowcase() {
                       </li>
                     ))}
                   </ul>
-                  <a
-                    href={site.waLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <WhatsAppLink
+                    event="Lead"
+                    content={s.name}
                     className="btn btn-primary mt-8"
                   >
                     Book on WhatsApp
-                  </a>
+                  </WhatsAppLink>
                 </div>
               </div>
             </div>

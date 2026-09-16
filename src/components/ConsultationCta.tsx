@@ -1,4 +1,4 @@
-import { site } from "@/lib/site";
+import WhatsAppLink from "@/components/WhatsAppLink";
 
 const points = [
   "A treatment precisely tailored to your needs.",
@@ -29,14 +29,13 @@ export default function ConsultationCta() {
                 </li>
               ))}
             </ul>
-            <a
-              href={site.waLink}
-              target="_blank"
-              rel="noopener noreferrer"
+            <WhatsAppLink
+              event="Lead"
+              content="Consultation"
               className="btn btn-primary mt-8"
             >
               Book on WhatsApp
-            </a>
+            </WhatsAppLink>
           </div>
           <div className="shape-media relative mx-auto aspect-[3/4] w-full max-w-sm">
             <img
