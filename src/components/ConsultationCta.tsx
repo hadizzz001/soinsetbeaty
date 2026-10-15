@@ -1,4 +1,5 @@
 import WhatsAppLink from "@/components/WhatsAppLink";
+import { cldImage } from "@/lib/cloudinary";
 
 const points = [
   "A treatment precisely tailored to your needs.",
@@ -39,8 +40,13 @@ export default function ConsultationCta() {
           </div>
           <div className="shape-media relative mx-auto aspect-[3/4] w-full max-w-sm">
             <img
-              src="https://res.cloudinary.com/seukwo8g/image/upload/v1787233368/consultation-cta_byib8c.jpg"
-              alt="Soins et Beauté consultation"
+              src={cldImage(
+                "https://res.cloudinary.com/seukwo8g/image/upload/v1787233368/consultation-cta_byib8c.jpg",
+                800
+              )}
+              alt="Skin consultation at Soins et Beauté aesthetic clinic"
+              loading="lazy"
+              decoding="async"
               className="absolute inset-0 h-full w-full object-cover"
             />
           </div>

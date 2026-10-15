@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { navLinks, site } from "@/lib/site";
+import { cldImage } from "@/lib/cloudinary";
 import WhatsAppLink from "@/components/WhatsAppLink";
 
 export default function Header() {
@@ -16,8 +17,10 @@ export default function Header() {
       <div className="container-site flex h-20 items-center justify-between md:h-24">
         <Link href="/" className="flex items-center gap-3">
           <img
-            src={site.logo}
+            src={cldImage(site.logo, 400)}
             alt={site.name}
+            width={site.logoWidth}
+            height={site.logoHeight}
             className="h-10 w-auto object-contain md:h-12"
           />
         </Link>

@@ -7,7 +7,11 @@
  *
  * Every getter still falls back to the static content in `site.ts` when the
  * database is unreachable or empty, so the site always renders.
+ *
+ * Getters used by several components of one page (and by generateMetadata)
+ * are wrapped in React `cache` so each request reads the collection once.
  */
+import { cache } from "react";
 import { Collections, findAll, getDb, serialize } from "./mongodb";
 import {
   about as staticAbout,
@@ -175,7 +179,7 @@ const fallbackClinics: Clinic[] = services.map((s) => ({
   points: s.points,
 }));
 
-export async function getClinics(): Promise<Clinic[]> {
+export const getClinics = cache(async (): Promise<Clinic[]> => {
   const rows = await getJson<ApiClinic[]>("/api/clinic");
   if (!Array.isArray(rows)) return fallbackClinics;
 
@@ -196,7 +200,7 @@ export async function getClinics(): Promise<Clinic[]> {
     .filter((clinic) => clinic.title && clinic.image);
 
   return clinics;
-}
+});
 
 /* ------------------------------------------------------------------ */
 /* Blog posts                                                          */
@@ -214,6 +218,14 @@ type ApiBlogPost = {
   published?: boolean | null;
   order?: number | null;
   publishedAt?: string | null;
+  createdAt?: string | null;
+  updatedAt?: string | null;
+};
+
+const toIso = (value?: string | null) => {
+  if (!value) return undefined;
+  const date = new Date(value);
+  return Number.isNaN(date.getTime()) ? undefined : date.toISOString();
 };
 
 const formatDate = (value?: string | null) => {
@@ -229,7 +241,7 @@ const formatDate = (value?: string | null) => {
   });
 };
 
-export async function getBlogPosts(): Promise<BlogPost[]> {
+export const getBlogPosts = cache(async (): Promise<BlogPost[]> => {
   const rows = await getJson<ApiBlogPost[]>("/api/blog");
   if (!Array.isArray(rows)) return staticBlogPosts;
 
@@ -244,6 +256,8 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
       title: row.title,
       excerpt: row.excerpt || "",
       date: formatDate(row.publishedAt),
+      publishedAt: toIso(row.publishedAt) ?? toIso(row.createdAt),
+      updatedAt: toIso(row.updatedAt),
       readTime: row.readTime || "",
       category: row.category || "",
       // never render an empty src if an editor forgot the cover image
@@ -260,7 +274,7 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
     .filter((post) => post.id && post.title);
 
   return posts;
-}
+});
 
 export async function getBlogPost(id: string): Promise<BlogPost | undefined> {
   const posts = await getBlogPosts();
@@ -287,7 +301,7 @@ type ApiAbout = {
   stats?: { value?: string; label?: string }[] | null;
 };
 
-export async function getAbout(): Promise<About> {
+export const getAbout = cache(async (): Promise<About> => {
   const row = await getJson<ApiAbout | null>("/api/about");
   if (!row || !row.id) return staticAbout;
 
@@ -315,7 +329,7 @@ export async function getAbout(): Promise<About> {
     values: values.length ? values : staticAbout.values,
     stats: stats.length ? stats : staticAbout.stats,
   };
-}
+});
 
 /* ------------------------------------------------------------------ */
 /* Footer concerns                                                     */

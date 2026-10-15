@@ -3,8 +3,10 @@ import PageHero from "@/components/PageHero";
 import FeatureSection from "@/components/FeatureSection";
 import TreatmentsAndReviews from "@/components/TreatmentsAndReviews";
 import ConsultationCta from "@/components/ConsultationCta";
+import JsonLd from "@/components/JsonLd";
 import { site } from "@/lib/site";
 import { getAbout } from "@/lib/cms";
+import { breadcrumbJsonLd, jsonLdGraph, pageMetadata } from "@/lib/seo";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
@@ -12,17 +14,22 @@ export const revalidate = 0;
 export async function generateMetadata(): Promise<Metadata> {
   const about = await getAbout();
 
-  return {
-    title: "About us",
-    description: about.hero.description,
-    alternates: { canonical: `${site.url}/about` },
-    openGraph: {
-      title: `About us — ${site.name}`,
-      description: about.hero.description,
-      url: `${site.url}/about`,
-      images: [{ url: about.hero.image, width: 1200, height: 630, alt: site.name }],
-    },
-  };
+  return pageMetadata({
+    title: "About Our Aesthetic Clinic in Hazmieh",
+    description:
+      "Meet Soins et Beauté, the beauty center and aesthetic clinic in Mar Takla, Hazmieh: certified medical-grade technology, trained specialists and honest advice.",
+    path: "/about",
+    image: about.hero.image,
+    imageAlt: `${site.name} aesthetic clinic in Mar Takla, Hazmieh`,
+    keywords: [
+      "about Soins et Beauté",
+      "aesthetic clinic Hazmieh",
+      "beauty center Mar Takla",
+      "beauty clinic Lebanon",
+      "medical-grade aesthetic treatments",
+      "skincare specialists Lebanon",
+    ],
+  });
 }
 
 export default async function AboutPage() {
@@ -31,6 +38,9 @@ export default async function AboutPage() {
 
   return (
     <>
+      <JsonLd
+        data={jsonLdGraph(breadcrumbJsonLd([{ name: "About", path: "/about" }]))}
+      />
       <PageHero
         eyebrow={about.hero.eyebrow}
         title={about.hero.title}

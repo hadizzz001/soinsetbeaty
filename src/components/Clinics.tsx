@@ -25,7 +25,8 @@ export default async function Clinics() {
           <p className="body-text max-w-lg">
             Soins et Beauté is a place people choose. Because they want the
             best. The safest. The most professional. We offer a wide range of
-            skincare and aesthetic treatments for every need.
+            skincare and aesthetic treatments for every need, at our clinic in
+            Mar Takla, Hazmieh.
           </p>
         </div>
       </div>

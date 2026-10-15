@@ -1,4 +1,6 @@
 import { site } from "@/lib/site";
+import { cldImage, cldVideo, cldVideoPoster } from "@/lib/cloudinary";
+import LazyVideo from "@/components/LazyVideo";
 
 type FeatureSectionProps = {
   eyebrow: string;
@@ -36,20 +38,19 @@ export default function FeatureSection({
         >
           {video ? (
             <div className="shape-media relative mx-auto w-full max-w-sm">
-              <video
-                src={video}
-                autoPlay
-                loop
-                muted
-                playsInline
+              <LazyVideo
+                src={cldVideo(video, 720)}
+                poster={cldVideoPoster(video, 720)}
                 className="block h-auto w-full"
               />
             </div>
           ) : (
             <div className="shape-media relative mx-auto aspect-[3/4] w-full max-w-sm">
               <img
-                src={image ?? ""}
+                src={cldImage(image ?? "", 800)}
                 alt={title}
+                loading="lazy"
+                decoding="async"
                 className="absolute inset-0 h-full w-full object-cover"
               />
             </div>

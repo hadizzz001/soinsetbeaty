@@ -7,6 +7,7 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 import AnnouncementBar from "@/components/AnnouncementBar";
 import MetaPixel from "@/components/MetaPixel";
 import { site } from "@/lib/site";
+import { socialImage } from "@/lib/seo";
 import { GoogleAnalytics } from "@next/third-parties/google";
 
 const playfair = Playfair_Display({
@@ -21,50 +22,45 @@ const jost = Jost({
   weight: ["300", "400", "500", "600", "700"],
 });
 
+// Icons come from the file conventions in this folder (favicon.ico, icon.png,
+// apple-icon.png). Canonical URLs are set per page, never here: a root
+// canonical would be inherited by every page that forgets its own (404s
+// included) and point them all at the homepage.
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.name} — Skincare & Aesthetic Treatments`,
+    default: site.title,
     template: `%s — ${site.name}`,
   },
   description: site.description,
-  icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon.ico",
-    apple: "/favicon.ico",
-  },
-  alternates: {
-    canonical: site.url,
-  },
+  keywords: site.keywords,
+  applicationName: site.name,
+  authors: [{ name: site.name, url: site.url }],
+  creator: site.name,
+  publisher: site.name,
+  category: "beauty",
   robots: {
     index: true,
     follow: true,
     googleBot: {
       index: true,
       follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
     },
   },
   openGraph: {
-    title: `${site.name} — Skincare & Aesthetic Treatments`,
+    title: site.title,
     description: site.description,
-    url: site.url,
     siteName: site.name,
-    images: [
-      {
-        url: site.ogImage,
-        width: 1200,
-        height: 630,
-        alt: site.name,
-      },
-    ],
+    images: [socialImage(site.ogImage, site.name)],
     locale: "en_US",
     type: "website",
   },
+  // Title, description and image are filled in from each page's Open Graph.
   twitter: {
     card: "summary_large_image",
-    title: `${site.name} — Skincare & Aesthetic Treatments`,
-    description: site.description,
-    images: [site.ogImage],
   },
 };
 
@@ -73,6 +69,7 @@ export const viewport: Viewport = {
   initialScale: 1,
   maximumScale: 1,
   userScalable: false,
+  themeColor: "#FFFDFA",
 };
 
 // AnnouncementBar / Footer read live MongoDB content.

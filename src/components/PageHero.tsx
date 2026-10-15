@@ -1,3 +1,5 @@
+import { cldImage, cldSrcSet } from "@/lib/cloudinary";
+
 type PageHeroProps = {
   eyebrow: string;
   title: string;
@@ -16,8 +18,11 @@ export default function PageHero({
   return (
     <section className="relative min-h-[58vh] w-full overflow-hidden">
       <img
-        src={image}
+        src={cldImage(image, 1920)}
+        srcSet={cldSrcSet(image, [828, 1280, 1920])}
+        sizes="100vw"
         alt={title}
+        fetchPriority="high"
         className="absolute inset-0 h-full w-full object-cover"
       />
 

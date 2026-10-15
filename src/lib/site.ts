@@ -1,11 +1,204 @@
 export const site = {
   name: "Soins et Beauté",
   shortName: "Soins et Beauté",
+  // Homepage <title>: brand + main search phrase, kept under 60 characters.
+  title: "Soins et Beauté — Aesthetic Clinic in Hazmieh, Lebanon",
+  // Default meta description (also shown in the footer), kept under 160 characters.
   description:
-    "Soins et Beauté is your go-to aesthetic clinic, offering premium skincare and aesthetic treatments performed by experienced professionals.",
+    "Soins et Beauté is a beauty center and aesthetic clinic in Hazmieh, Lebanon, offering laser hair removal, HIFU, body contouring, facials and microblading.",
+  // <meta name="keywords"> for the homepage and any page without its own
+  // list. Only treatments the clinic actually offers, grouped by topic.
+  keywords: [
+    // Brand & clinic
+    "Soins et Beauté",
+    "Soins et Beaute Hazmieh",
+    "aesthetic clinic Lebanon",
+    "aesthetic clinic Hazmieh",
+    "aesthetic center Beirut",
+    "beauty center Hazmieh",
+    "beauty center Lebanon",
+    "beauty center Beirut",
+    "beauty center Mar Takla",
+    "beauty center Baabda",
+    "beauty clinic Beirut",
+    "beauty salon Hazmieh",
+    "beauty salon Lebanon",
+    "beauty lounge Hazmieh",
+    "beauty institute Lebanon",
+    "institut de beauté Liban",
+    "institut de beauté Hazmieh",
+    "centre esthétique Liban",
+    "aesthetic treatments Lebanon",
+    "non-surgical aesthetic treatments",
+    "medical aesthetics Lebanon",
+    "beauty consultation Lebanon",
+
+    // Skincare & facials
+    "skincare clinic Lebanon",
+    "skin care center Hazmieh",
+    "skincare treatments Beirut",
+    "facials Hazmieh",
+    "facial treatment Lebanon",
+    "facials Beirut",
+    "deep cleansing facial",
+    "hydrating facial",
+    "anti-aging facial",
+    "oxygen facial",
+    "oxygen facial Lebanon",
+    "oxygen facial machine",
+    "oxygen therapy facial",
+    "HydraFacial Lebanon",
+    "HydraFacial Beirut",
+    "Dermapen Lebanon",
+    "microneedling Lebanon",
+    "Plasmapen Lebanon",
+    "plasma pen skin tightening",
+    "Profhilo Lebanon",
+    "skin booster treatment",
+    "Fotona laser Lebanon",
+    "laser skin rejuvenation",
+    "acne treatment Lebanon",
+    "acne scars treatment",
+    "hyperpigmentation treatment Lebanon",
+    "dark spots treatment",
+    "enlarged pores treatment",
+    "wrinkles treatment",
+    "fine lines treatment",
+    "glowing skin treatment",
+    "soins du visage Liban",
+    "men's skincare Lebanon",
+    "facial for men Beirut",
+
+    // Face lifting & skin tightening
+    "HIFU Lebanon",
+    "HIFU Hazmieh",
+    "HIFU Beirut",
+    "HIFU face lift",
+    "HIFU machine",
+    "HIFU for men",
+    "non-surgical face lift",
+    "facial lifting Lebanon",
+    "skin tightening Lebanon",
+    "skin laxity treatment",
+    "jawline lifting",
+    "collagen boosting treatment",
+
+    // Laser hair removal
+    "laser hair removal Lebanon",
+    "laser hair removal Hazmieh",
+    "laser hair removal Beirut",
+    "diode laser hair removal",
+    "diode laser Lebanon",
+    "diode laser machine",
+    "painless laser hair removal",
+    "full body laser hair removal",
+    "laser hair removal for men",
+    "laser hair removal for women",
+    "unwanted hair removal",
+    "ingrown hair treatment",
+    "épilation laser Liban",
+
+    // Body contouring, EMS & RF machines
+    "EMS body sculpting",
+    "EMS sculpting Lebanon",
+    "EMS sculpting Hazmieh",
+    "EMS sculpting Beirut",
+    "EMS machine",
+    "EMS muscle stimulation",
+    "electromagnetic muscle stimulation",
+    "muscle toning treatment",
+    "EMS and RF body contouring",
+    "radiofrequency skin tightening",
+    "RF body tightening",
+    "RF machine Lebanon",
+    "body contouring Lebanon",
+    "body contouring Beirut",
+    "body sculpting Lebanon",
+    "body sculpting machine",
+    "non-surgical body contouring",
+    "body care center Lebanon",
+    "body treatments Hazmieh",
+    "soins du corps Liban",
+
+    // Slimming, cellulite & drainage
+    "slimming center Lebanon",
+    "slimming center Hazmieh",
+    "slimming center Beirut",
+    "slimming treatment Lebanon",
+    "body slimming",
+    "slimming machine",
+    "fat reduction Lebanon",
+    "stubborn fat removal",
+    "non-surgical fat reduction",
+    "cellulite treatment Lebanon",
+    "cellulite reduction",
+    "anti-cellulite massage",
+    "maderotherapy",
+    "maderotherapy Lebanon",
+    "wood therapy massage",
+    "pressotherapy",
+    "pressotherapy Lebanon",
+    "pressotherapy machine",
+    "lymphatic drainage Lebanon",
+    "lymphatic drainage massage",
+    "water retention treatment",
+    "heavy legs treatment",
+    "body detox treatment",
+    "stretch marks treatment",
+    "amincissement Liban",
+
+    // Permanent makeup
+    "microblading Lebanon",
+    "microblading Hazmieh",
+    "microblading Beirut",
+    "eyebrow microblading",
+    "eyebrow tattoo Lebanon",
+    "permanent makeup Lebanon",
+    "semi-permanent makeup",
+    "lip blush and eyeliner",
+    "lip blush Lebanon",
+    "lip blush tattoo",
+    "permanent eyeliner",
+    "eyeliner tattoo",
+
+    // Makeup
+    "bridal makeup Lebanon",
+    "bridal makeup Beirut",
+    "bridal makeup Hazmieh",
+    "wedding makeup Lebanon",
+    "makeup artist Lebanon",
+    "makeup artist Hazmieh",
+    "makeup artist Beirut",
+    "evening makeup",
+    "event makeup",
+    "professional makeup services",
+    "makeup studio Hazmieh",
+    "maquillage mariée Liban",
+
+    // Nails
+    "nail salon Hazmieh",
+    "nail salon Beirut",
+    "nail salon Lebanon",
+    "manicure Hazmieh",
+    "pedicure Hazmieh",
+    "manicure and pedicure Lebanon",
+    "gel nails Lebanon",
+    "gel polish manicure",
+    "nail art Lebanon",
+    "nail studio Hazmieh",
+
+    // Tattoo removal
+    "tattoo removal Lebanon",
+    "tattoo removal Hazmieh",
+    "tattoo removal Beirut",
+    "laser tattoo removal",
+  ],
   url: "https://soinsetbeaute.com",
   logo:
     "https://res.cloudinary.com/seukwo8g/image/upload/v1786881108/436803874_1184535092718167_1564630689125613085_n__1_-removebg-preview_t6o5xv.png",
+  // Intrinsic size of the logo file, so the page reserves its space.
+  logoWidth: 767,
+  logoHeight: 325,
   ogImage:
     "https://res.cloudinary.com/seukwo8g/image/upload/v1786881108/d69a38_mywojn.jpg",
   phone: "+961 3 885 683",
@@ -13,6 +206,10 @@ export const site = {
   waLink: "https://wa.me/9613885683",
   email: "najatehoyek@hotmail.com",
   address: "Mar Takla, Hazmieh, Lebanon",
+  // Same address split for structured data (schema.org PostalAddress).
+  streetAddress: "Mar Takla",
+  locality: "Hazmieh",
+  countryCode: "LB",
   instagram: "https://www.instagram.com/soins_et_beaute",
   facebook: "https://www.facebook.com/soinsbeauteinstitut/",
   gaId: "G-0HQ9PGJTDS",
@@ -286,6 +483,9 @@ export type BlogPost = {
   title: string;
   excerpt: string;
   date: string;
+  /** ISO dates for search engines (structured data, sitemap). */
+  publishedAt?: string;
+  updatedAt?: string;
   readTime: string;
   category: string;
   image: string;
@@ -299,6 +499,7 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       "Not sure which treatment is right for you? The Open Consultation gives you a full session with an expert who maps out exactly what your skin and body need.",
     date: "August 12, 2026",
+    publishedAt: "2026-08-12",
     readTime: "4 min read",
     category: "Consultation",
     image:
@@ -330,6 +531,7 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       "Both smooth, drain and reshape — but they work in completely different ways. Here is how to tell which one your body is asking for.",
     date: "August 5, 2026",
+    publishedAt: "2026-08-05",
     readTime: "5 min read",
     category: "Body",
     image:
@@ -362,6 +564,7 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       "High-Intensity Focused Ultrasound reaches the same layer a surgeon lifts — without a single incision. Here is what it can and cannot do.",
     date: "July 28, 2026",
+    publishedAt: "2026-07-28",
     readTime: "5 min read",
     category: "Face",
     image:
@@ -394,6 +597,7 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       "Male skin is thicker, oilier and shaves every day. It needs a routine built for it, not a scaled-down version of someone else's.",
     date: "July 19, 2026",
+    publishedAt: "2026-07-19",
     readTime: "4 min read",
     category: "Skincare",
     image:
@@ -426,6 +630,7 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       "Ingrown hairs, congestion, razor burn and stubborn pigmentation. The four complaints we hear most, and what actually resolves them.",
     date: "July 8, 2026",
+    publishedAt: "2026-07-08",
     readTime: "5 min read",
     category: "Skincare",
     image:
@@ -461,6 +666,7 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       "Four products, five minutes a day. Everything beyond that is optional — here is the routine we actually recommend.",
     date: "June 30, 2026",
+    publishedAt: "2026-06-30",
     readTime: "3 min read",
     category: "Skincare",
     image:

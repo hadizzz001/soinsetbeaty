@@ -5,6 +5,7 @@ import Autoplay from "embla-carousel-autoplay";
 import { useState } from "react";
 import Link from "next/link";
 import type { BlogPost } from "@/lib/site";
+import { cldImage } from "@/lib/cloudinary";
 
 export default function BlogCarousel({ posts }: { posts: BlogPost[] }) {
   // useState initializer keeps one stable plugin instance without reading a ref in render
@@ -26,8 +27,10 @@ export default function BlogCarousel({ posts }: { posts: BlogPost[] }) {
             <Link href={`/blog/${post.id}`} className="group flex flex-col">
               <div className="shape-media relative aspect-[3/4] w-full">
                 <img
-                  src={post.image}
+                  src={cldImage(post.image, 600)}
                   alt={post.title}
+                  loading="lazy"
+                  decoding="async"
                   className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
               </div>

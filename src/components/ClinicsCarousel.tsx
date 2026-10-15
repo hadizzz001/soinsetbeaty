@@ -4,6 +4,8 @@ import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import { useState } from "react";
 import type { Clinic } from "@/lib/cms";
+import { cldImage } from "@/lib/cloudinary";
+import { site } from "@/lib/site";
 
 export default function ClinicsCarousel({ clinics }: { clinics: Clinic[] }) {
   // useState initializer keeps one stable plugin instance without reading a ref in render
@@ -25,8 +27,10 @@ export default function ClinicsCarousel({ clinics }: { clinics: Clinic[] }) {
             <div className="flex flex-col">
               <div className="shape-media relative aspect-[3/4] w-full">
                 <img
-                  src={clinic.image}
-                  alt={clinic.name}
+                  src={cldImage(clinic.image, 600)}
+                  alt={`${clinic.name} at ${site.name}`}
+                  loading="lazy"
+                  decoding="async"
                   className="absolute inset-0 h-full w-full object-cover"
                 />
               </div>

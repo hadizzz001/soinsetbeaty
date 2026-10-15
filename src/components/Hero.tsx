@@ -1,4 +1,6 @@
 import { getBanner } from "@/lib/cms";
+import { cldImage, cldSrcSet } from "@/lib/cloudinary";
+import { site } from "@/lib/site";
 
 export default async function Hero() {
   // Banner images, texts and buttons come from the dashboard.
@@ -6,16 +8,22 @@ export default async function Hero() {
 
   return (
     <section className="relative h-[92vh] min-h-[560px] w-full overflow-hidden">
-      <img
-        src={banner.mobileImage}
-        alt="Soins et Beauté — aesthetic clinic"
-        className="absolute inset-0 h-full w-full object-cover md:hidden"
-      />
-      <img
-        src={banner.image}
-        alt="Soins et Beauté — aesthetic clinic"
-        className="absolute inset-0 hidden h-full w-full object-cover md:block"
-      />
+      {/* One <picture> so each device downloads only its own image. */}
+      <picture>
+        <source
+          media="(min-width: 768px)"
+          srcSet={cldSrcSet(banner.image, [1280, 1920]) ?? banner.image}
+          sizes="100vw"
+        />
+        <img
+          src={cldImage(banner.mobileImage, 1080)}
+          srcSet={cldSrcSet(banner.mobileImage, [640, 828, 1080])}
+          sizes="100vw"
+          alt={`${site.name} beauty center and aesthetic clinic in Hazmieh, Lebanon`}
+          fetchPriority="high"
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+      </picture>
 
       <div aria-hidden className="hero-white-spot" />
 
@@ -25,10 +33,13 @@ export default async function Hero() {
             {banner.eyebrow}
           </p>
         )}
-        {banner.title && (
+        {banner.title ? (
           <h1 className="animate-fade-up relative mt-4 w-full max-w-2xl font-serif text-4xl leading-[1.1] text-white md:text-6xl">
             {banner.title}
           </h1>
+        ) : (
+          // The page still needs its main heading when the banner has no title.
+          <h1 className="sr-only">{site.title}</h1>
         )}
         {banner.description && (
           <p

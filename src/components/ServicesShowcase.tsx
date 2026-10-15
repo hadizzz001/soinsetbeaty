@@ -1,4 +1,6 @@
 import { getClinics } from "@/lib/cms";
+import { cldImage } from "@/lib/cloudinary";
+import { site } from "@/lib/site";
 import WhatsAppLink from "@/components/WhatsAppLink";
 
 export default async function ServicesShowcase() {
@@ -27,8 +29,10 @@ export default async function ServicesShowcase() {
               >
                 <div className="shape-media relative mx-auto aspect-[3/4] w-full max-w-sm">
                   <img
-                    src={s.image}
-                    alt={s.name}
+                    src={cldImage(s.image, 800)}
+                    alt={`${s.name} at ${site.name}`}
+                    loading="lazy"
+                    decoding="async"
                     className="absolute inset-0 h-full w-full object-cover"
                   />
                 </div>

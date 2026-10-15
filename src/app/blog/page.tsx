@@ -2,11 +2,20 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import ConsultationCta from "@/components/ConsultationCta";
-import { site } from "@/lib/site";
+import JsonLd from "@/components/JsonLd";
 import { getBlogPosts } from "@/lib/cms";
+import { cldImage } from "@/lib/cloudinary";
+import { breadcrumbJsonLd, jsonLdGraph, pageMetadata } from "@/lib/seo";
 
 const intro =
   "Tips, advice and honest information on skin and body care, written by the team that performs the treatments.";
+
+const heroImage =
+  "https://res.cloudinary.com/seukwo8g/image/upload/v1787016004/6271dff7-86e4-44b0-b7ab-771c271e32b0_bpg7tz.jpg";
+
+const breadcrumbs = jsonLdGraph(
+  breadcrumbJsonLd([{ name: "Blog", path: "/blog" }])
+);
 
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
@@ -14,19 +23,22 @@ export const revalidate = 0;
 export async function generateMetadata(): Promise<Metadata> {
   const posts = await getBlogPosts();
 
-  return {
-    title: "Blog",
-    description: intro,
-    alternates: { canonical: `${site.url}/blog` },
-    openGraph: {
-      title: `Blog — ${site.name}`,
-      description: intro,
-      url: `${site.url}/blog`,
-      images: posts[0]
-        ? [{ url: posts[0].image, width: 1200, height: 630, alt: site.name }]
-        : undefined,
-    },
-  };
+  return pageMetadata({
+    title: "Skincare & Beauty Blog",
+    description:
+      "Skincare tips, body treatment guides and honest advice on laser hair removal, HIFU and facials from the Soins et Beauté team in Hazmieh, Lebanon.",
+    path: "/blog",
+    image: posts[0]?.image ?? heroImage,
+    keywords: [
+      "skincare blog",
+      "beauty tips Lebanon",
+      "skincare advice",
+      "laser hair removal guide",
+      "HIFU explained",
+      "body treatments",
+      "men's skincare",
+    ],
+  });
 }
 
 export default async function BlogPage() {
@@ -37,11 +49,12 @@ export default async function BlogPage() {
   if (!featured) {
     return (
       <>
+        <JsonLd data={breadcrumbs} />
         <PageHero
           eyebrow="Our blog"
           title="Skin, body and everything in between."
           description={intro}
-          image="https://res.cloudinary.com/seukwo8g/image/upload/v1787016004/6271dff7-86e4-44b0-b7ab-771c271e32b0_bpg7tz.jpg"
+          image={heroImage}
         />
         <section
           className="section-y"
@@ -60,11 +73,12 @@ export default async function BlogPage() {
 
   return (
     <>
+      <JsonLd data={breadcrumbs} />
       <PageHero
         eyebrow="Our blog"
         title="Skin, body and everything in between."
         description={intro}
-        image="https://res.cloudinary.com/seukwo8g/image/upload/v1787016004/6271dff7-86e4-44b0-b7ab-771c271e32b0_bpg7tz.jpg"
+        image={heroImage}
       />
 
       <section className="section-y" style={{ backgroundColor: "var(--color-body)" }}>
@@ -75,8 +89,10 @@ export default async function BlogPage() {
           >
             <div className="shape-media relative aspect-[4/3] w-full">
               <img
-                src={featured.image}
+                src={cldImage(featured.image, 1200)}
                 alt={featured.title}
+                loading="lazy"
+                decoding="async"
                 className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
             </div>
@@ -97,8 +113,10 @@ export default async function BlogPage() {
               <Link key={post.id} href={`/blog/${post.id}`} className="group flex flex-col">
                 <div className="shape-media relative aspect-[3/4] w-full">
                   <img
-                    src={post.image}
+                    src={cldImage(post.image, 800)}
                     alt={post.title}
+                    loading="lazy"
+                    decoding="async"
                     className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
